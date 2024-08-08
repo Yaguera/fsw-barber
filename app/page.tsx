@@ -4,7 +4,6 @@ import Header from "./_components/header"
 import { Input } from "./_components/ui/input"
 import { SearchIcon } from "lucide-react"
 import Image from "next/image"
-import { Card, CardContent } from "./_components/ui/card"
 import { quickSearchOptions } from "./_constants/quickSearch"
 import BookingItem from "./_components/booking-item"
 import { db } from "./_lib/prisma"
@@ -81,16 +80,6 @@ const Home = async () => {
           ))}
         </div>
       </div>
-      {/* FOOTER */}
-      <footer>
-        <Card className="px-5 py-6">
-          <CardContent>
-            <p className="text-sm text-gray-400">
-              © 2023 Copyright <span className="font-bold">FSW Barber</span>
-            </p>
-          </CardContent>
-        </Card>
-      </footer>
     </div>
   )
 }
