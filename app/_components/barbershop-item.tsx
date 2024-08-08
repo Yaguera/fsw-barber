@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "./ui/button"
 import { Badge } from "./ui/badge"
 import { StarIcon } from "lucide-react"
+import Link from "next/link"
 
 interface BarbershopItemProps {
   barbershop: Barbershop
@@ -37,8 +38,10 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
             {barbershop.name}
           </h3>
           <p className="truncate text-sm text-gray-400">{barbershop.address}</p>
-          <Button variant="secondary" className="m-3 w-full">
-            Reservar
+          {/* Não é semantico deixar a tag <a> dentro de um button, 
+          se o botão leva para outra url ele tem que ser uma ancor tag, entao usamos a propriedade asChild do shadcn */}
+          <Button variant="secondary" className="m-3 w-full" asChild>
+            <Link href={`/barbershops/${barbershop.id}`}>Reservar</Link>
           </Button>
         </div>
       </CardContent>
