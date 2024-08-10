@@ -8,6 +8,7 @@ import { quickSearchOptions } from "./_constants/quickSearch"
 import BookingItem from "./_components/booking-item"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
+import Greatings from "./_components/greetings"
 
 const Home = async () => {
   // chamar banco de dados
@@ -23,8 +24,7 @@ const Home = async () => {
       {/* HEADER */}
       <Header />
       <div className="p-5">
-        <h2 className="text-xl font-bold">Olá, Yaguera</h2>
-        <p>Terça-feira, 06 de Agosto</p>
+        <Greatings />
 
         {/* BUSCA */}
         <div className="mt-6 flex items-center gap-2">

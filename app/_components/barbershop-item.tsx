@@ -40,7 +40,7 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
           <p className="truncate text-sm text-gray-400">{barbershop.address}</p>
           {/* Não é semantico deixar a tag <a> dentro de um button, 
           se o botão leva para outra url ele tem que ser uma ancor tag, entao usamos a propriedade asChild do shadcn */}
-          <Button variant="secondary" className="m-3 w-full" asChild>
+          <Button variant="secondary" className="mt-3 w-full" asChild>
             <Link href={`/barbershops/${barbershop.id}`}>Reservar</Link>
           </Button>
         </div>
