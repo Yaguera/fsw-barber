@@ -8,6 +8,7 @@ import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import Greatings from "./_components/greetings"
 import Search from "./_components/search"
+import Link from "next/link"
 
 const Home = async () => {
   // chamar banco de dados
@@ -17,6 +18,8 @@ const Home = async () => {
       name: "desc",
     },
   })
+
+  const shuffledBarbershops = barbershops.sort(() => Math.random() - 0.5)
 
   return (
     <div>
@@ -33,15 +36,20 @@ const Home = async () => {
         {/* BUSCA RAPIDA */}
         <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
           {quickSearchOptions.map((option) => (
-            <Button key={option.title} className="gap-2" variant="secondary">
-              <Image
-                src={option.imageUrl}
-                width={16}
-                height={16}
-                alt={option.title}
-              />
-              {option.title}
-            </Button>
+            <Link
+              href={`/barbershops?search=${option.title}`}
+              key={option.title}
+            >
+              <Button className="gap-2" variant="secondary">
+                <Image
+                  src={option.imageUrl}
+                  width={16}
+                  height={16}
+                  alt={option.title}
+                />
+                {option.title}
+              </Button>
+            </Link>
           ))}
         </div>
 
@@ -62,7 +70,7 @@ const Home = async () => {
           Recomendados
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
+          {shuffledBarbershops.map((barbershop) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
